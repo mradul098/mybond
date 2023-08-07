@@ -53,3 +53,30 @@ exports.deleteTrade = async (req, res) => {
     res.status(500).json({ error: 'An error occurred' });
   }
 };
+
+// Retrieve security to which the trade belongs
+
+exports.filterSecurityTrade=async(req,res) => {
+  try{
+    const trade=await Trade.findById(req.params.id);
+    if (!trade)
+    {
+      return res.status(404).json({message:'Trade not found'});
+    }
+    const securityId=trade.SecurityId;
+    const Security=require('../models/Security');
+    const security=await Security.findById(securityId);
+    if (!security)
+    {
+      return res.status(404).json({message:'Security not found'});
+    }
+    res.status(200).json(security);
+
+  }
+  catch (error)
+  {
+    res.status(500).json({ error: 'An error occurred' });
+  }
+}
+
+// Get all trades for a security (Filter trades by security id)

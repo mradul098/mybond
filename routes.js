@@ -32,6 +32,7 @@ router.delete('/users/:id', userController.deleteUser);
 // Trade routes
 router.get('/trades', tradeController.getAllTrades);
 router.get('/trades/:id', tradeController.getTradeById);
+router.get('/getSecurityForTrade/:id',tradeController.filterSecurityTrade);
 router.post('/trades', tradeController.createTrade);
 router.put('/trades/:id', tradeController.updateTrade);
 router.delete('/trades/:id', tradeController.deleteTrade);

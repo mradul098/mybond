@@ -53,3 +53,5 @@ exports.deleteSecurity = async (req, res) => {
     res.status(500).json({ error: 'An error occurred' });
   }
 };
+
+// Get securities by date range
