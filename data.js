@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 const autoPopulate = require('mongoose-autopopulate');
 const faker = require('faker');
+const env=require('dotenv/config');
 
 // Connect to your MongoDB database
-mongoose.connect('mongodb+srv://bondapp:Bond123@bondcluster.crbrxw7.mongodb.net/Bond?retryWrites=true&w=majority', {
+mongoose.connect(process.env.MONGODB_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
