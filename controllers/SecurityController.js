@@ -55,3 +55,20 @@ exports.deleteSecurity = async (req, res) => {
 };
 
 // Get securities by date range
+
+exports.filterByDateRange = async (req, res) => {
+  try {
+    const startDate=new Date(req.query.start);
+    const endDate=new Date(req.query.end);
+    console.log(startDate);
+    console.log(endDate);
+    const securities = await Security.find({MaturityDate:{$gte:startDate,$lte:endDate}});
+    if (!securities) {
+      return res.status(404).json({ message: 'Securities not found' });
+    }
+    console.log(securities);
+    res.status(200).json(securities);
+  } catch (error) {
+    res.status(500).json({ error: 'An error occurred' });
+  }
+};

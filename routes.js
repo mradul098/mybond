@@ -33,6 +33,7 @@ router.delete('/users/:id', userController.deleteUser);
 router.get('/trades', tradeController.getAllTrades);
 router.get('/trades/:id', tradeController.getTradeById);
 router.get('/getSecurityForTrade/:id',tradeController.filterSecurityTrade);
+router.get('/getTradesForSecurity/:securityId',tradeController.filterTradeBySecurityId);
 router.post('/trades', tradeController.createTrade);
 router.put('/trades/:id', tradeController.updateTrade);
 router.delete('/trades/:id', tradeController.deleteTrade);
@@ -40,6 +41,7 @@ router.delete('/trades/:id', tradeController.deleteTrade);
 // Security routes
 router.get('/securities', securityController.getAllSecurities);
 router.get('/securities/:id', securityController.getSecurityById);
+router.get('/filterByDateRange',securityController.filterByDateRange);
 router.post('/securities', securityController.createSecurity);
 router.put('/securities/:id', securityController.updateSecurity);
 router.delete('/securities/:id', securityController.deleteSecurity);

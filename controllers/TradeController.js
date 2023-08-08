@@ -80,3 +80,19 @@ exports.filterSecurityTrade=async(req,res) => {
 }
 
 // Get all trades for a security (Filter trades by security id)
+
+exports.filterTradeBySecurityId=async(req,res) => {
+  try{
+    const trades=await Trade.find({SecurityId:req.params.securityId});
+    if (!trades)
+    {
+      return res.status(404).json({message:'Trades not found'});
+    }
+    res.status(200).json(trades);
+
+  }
+  catch (error)
+  {
+    res.status(500).json({ error: 'An error occurred' });
+  }
+}
